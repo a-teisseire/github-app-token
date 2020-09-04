@@ -1,11 +1,28 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'GitHub App Token'
+description: 'Get a GitHub App token in your workflows'
+author: 'Anthony Teisseire'
 inputs:
-  milliseconds: # change this
+  appId:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'GitHub App ID'
+  appKey:
+    required: true
+    description: 'Base64 encoded PEM key of the GitHub App'
+  withOrganization:
+    required: false
+    description: 'Get a token from the current organization installation'
+  withRepository:
+    required: false
+    description: 'Get a token from the current repository installation'
+  organization:
+    required: false
+    description: 'Get a token from the specified organization installation'
+  repository:
+    required: false
+    description: 'Get a token from the specified organization installation'
+outputs:
+  token:
+    description: 'The GitHub App token for the specified installation'
 runs:
   using: 'node12'
   main: 'dist/index.js'
